@@ -404,34 +404,3 @@ ggplot(references, aes(-PC2, PC1)) +
   geom_text(data = targets,size=2,label=targets$POP) 
 dev.off()
 
-
-library(remotes)
-#install_github("r-spatial/sf")
-
-library(sp)
-library(maps)
-library(maptools)
-library(ggplot2)
-library(ggthemes)
-
-library(ggimage)
-library(rnaturalearth)
-library(countrycode)
-library(ggthemes)
-library(reshape2)
-
-map <- ne_countries(scale = "medium", returnclass = "sf")
-EAS<-map[map$subregion=="Eastern Asia",]
-Cambodia<-map[map$admin=="Cambodia",]
-Vietnam<-map[map$admin=="Vietnam",]
-
-
-library(rvest)
-
-
-coord <- read_html("https://developers.google.com/public-data/docs/canonical/countries_csv")
-
-coord_tables <- coord %>% html_table(header = TRUE, fill = TRUE)
-
-coord <- coord_tables[[1]]
-
